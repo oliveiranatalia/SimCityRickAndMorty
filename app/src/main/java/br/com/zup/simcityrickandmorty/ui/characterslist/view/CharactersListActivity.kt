@@ -10,5 +10,7 @@ class CharactersListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 }

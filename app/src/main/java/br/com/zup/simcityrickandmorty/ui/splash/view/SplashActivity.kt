@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import br.com.zup.simcityrickandmorty.databinding.ActivitySplashBinding
+import br.com.zup.simcityrickandmorty.ui.characterslist.view.CharactersListActivity
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
