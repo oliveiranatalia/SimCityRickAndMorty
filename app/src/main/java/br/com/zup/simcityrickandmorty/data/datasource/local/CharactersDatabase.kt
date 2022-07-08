@@ -1,13 +1,12 @@
 package br.com.zup.simcityrickandmorty.data.datasource.local
 
 import android.content.Context
+import androidx.room.*
 import br.com.zup.simcityrickandmorty.data.datasource.local.dao.CharactersDAO
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 
 @Database(entities = [CharactersResult::class], version = 3)
+@TypeConverters(Converters::class)
 abstract class CharactersDatabase:RoomDatabase() {
     abstract fun charDao(): CharactersDAO
 

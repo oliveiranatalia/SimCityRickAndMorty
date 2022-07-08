@@ -2,6 +2,7 @@ package br.com.zup.simcityrickandmorty.data.model
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -10,8 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class CharactersResult(
     @SerializedName("created")
     val created: String = "",
-    @SerializedName("episode")
-    val episode: List<String> = listOf(),
+    //@SerializedName("episode")
+    //val episode: List<String> = listOf(),
     @SerializedName("gender")
     val gender: String = "",
     @SerializedName("id")
@@ -20,6 +21,7 @@ data class CharactersResult(
     val image: String = "",
     @SerializedName("location")
     val location: Location = Location(),
+    @PrimaryKey(autoGenerate = false)
     @SerializedName("name")
     val name: String = "",
     @SerializedName("origin")

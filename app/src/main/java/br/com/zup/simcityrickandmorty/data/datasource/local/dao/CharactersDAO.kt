@@ -9,7 +9,7 @@ import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 @Dao
 interface CharactersDAO {
 
-    @Query("SELECT * FROM characters ORDER BY episode ASC")
+    @Query("SELECT * FROM characters ORDER BY name ASC")
     fun getCharactersList():List<CharactersResult>
 
     @Query("SELECT * FROM characters WHERE isFavorite = 1")
