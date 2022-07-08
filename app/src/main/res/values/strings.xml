@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Rick and Morty</string>
+    <string name="splash_desc">Imagem do Rick e Morty saindo do portal em um outro planeta. Rick animado sorrindo e Morty assustado e inseguro com o ambiente desconhecido.</string>
+    <string name="char_name">Character Name</string>
+    <string name="fav_name">Favoritos</string>
+    <string name="favorite">Personagem favoritado com sucesso!</string>
+    <string name="disfavor">Personagem desfavoritado!</string>
+</resources>
