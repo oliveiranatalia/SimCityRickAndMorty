@@ -35,4 +35,9 @@ class CharactersAdapter(
     }
 
     override fun getItemCount() = charList.size
+
+    fun updateList(newList:MutableList<CharactersResult>){
+        charList = newList
+        notifyDataSetChanged()
+    }
 }

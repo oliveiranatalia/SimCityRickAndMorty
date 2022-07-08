@@ -1,4 +1,4 @@
-package br.com.zup.simcityrickandmorty.data
+package br.com.zup.simcityrickandmorty.data.datasource.remote
 
 import br.com.zup.simcityrickandmorty.BuildConfig
 import okhttp3.OkHttpClient
