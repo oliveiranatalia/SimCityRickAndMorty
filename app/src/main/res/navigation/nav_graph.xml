@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/charactersFragment">
+
+    <fragment
+        android:id="@+id/charactersFragment"
+        android:name="br.com.zup.simcityrickandmorty.ui.characterslist.CharactersFragment"
+        android:label="Rick and Morty"
+        tools:layout="@layout/fragment_characters" >
+        <action
+            android:id="@+id/action_charactersFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_charactersFragment_to_favoritedListFragment"
+            app:destination="@id/favoritedListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="br.com.zup.simcityrickandmorty.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/favoritedListFragment"
+        android:name="br.com.zup.simcityrickandmorty.FavoritedListFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_favorited_list" >
+        <action
+            android:id="@+id/action_favoritedListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_favoritedListFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+    </fragment>
+</navigation>
