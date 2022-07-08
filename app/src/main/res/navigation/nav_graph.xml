@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="br.com.zup.simcityrickandmorty.DetailFragment"
+        android:name="br.com.zup.simcityrickandmorty.ui.characterdetail.view.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/favoritedListFragment"
-        android:name="br.com.zup.simcityrickandmorty.FavoritedListFragment"
+        android:name="br.com.zup.simcityrickandmorty.ui.favoritedlist.view.FavoritedListFragment"
         android:label="Favoritos"
         tools:layout="@layout/fragment_favorited_list" >
         <action
