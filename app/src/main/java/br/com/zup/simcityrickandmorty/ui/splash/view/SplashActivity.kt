@@ -3,12 +3,10 @@ package br.com.zup.simcityrickandmorty.ui.splash.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import br.com.zup.simcityrickandmorty.databinding.ActivitySplashBinding
-import br.com.zup.simcityrickandmorty.ui.characterslist.view.CharactersListActivity
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
