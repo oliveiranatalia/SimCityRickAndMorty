@@ -9,8 +9,7 @@ import com.squareup.picasso.Picasso
 
 class CharactersAdapter(
     private var charList: MutableList<CharactersResult>,
-    private val clickDetail:(characterResult: CharactersResult) -> Unit,
-    private val clickFav:(characterResult: CharactersResult) -> Unit
+    private val clickDetail:(characterResult: CharactersResult) -> Unit
 ) :
     RecyclerView.Adapter<CharactersAdapter.ViewHolder>(){
 

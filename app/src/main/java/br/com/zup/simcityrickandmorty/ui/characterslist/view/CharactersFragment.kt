@@ -25,7 +25,7 @@ class CharactersFragment : Fragment() {
     private val viewModel: CharacterViewModel by lazy {
         ViewModelProvider(this)[CharacterViewModel::class.java]}
     private val adapter: CharactersAdapter by lazy {
-        CharactersAdapter(arrayListOf(), ::goToDetail,::goToFavorited)
+        CharactersAdapter(arrayListOf(), ::goToDetail)
     }
 
     override fun onCreateView(
@@ -41,7 +41,7 @@ class CharactersFragment : Fragment() {
         showRecycler()
         viewModel.getCharacterList()
         observers()
-
+        goToFavorited()
     }
     private fun observers() {
         viewModel.listState.observe(this.viewLifecycleOwner) {
@@ -80,7 +80,9 @@ class CharactersFragment : Fragment() {
         val bundle = bundleOf(CHARACTER to char)
         NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_detailFragment,bundle)
     }
-    private fun goToFavorited(char:CharactersResult){
-        viewModel.favoriteCharacter(char)
+    private fun goToFavorited(){
+        binding.ivFavoritedList.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_favoritedListFragment)
+        }
     }
 }

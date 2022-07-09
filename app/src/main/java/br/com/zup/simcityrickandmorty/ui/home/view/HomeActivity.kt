@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import br.com.zup.simcityrickandmorty.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -16,9 +16,10 @@ class HomeActivity : AppCompatActivity() {
         appBar()
     }
     private fun appBar(){
+        supportActionBar?.hide()
         val navHostFragment = (supportFragmentManager.findFragmentById(binding.navHostFragment.id)) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController,appBarConfiguration)
+        binding.toolbar.setupWithNavController(navController,appBarConfiguration)
     }
 }

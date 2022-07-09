@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavHost
+import androidx.navigation.Navigation
 import br.com.zup.simcityrickandmorty.R
 import br.com.zup.simcityrickandmorty.const.CHARACTER
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 import br.com.zup.simcityrickandmorty.databinding.FragmentDetailBinding
-import br.com.zup.simcityrickandmorty.ui.home.view.HomeActivity
+import com.google.android.material.navigation.NavigationBarItemView
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {
@@ -26,17 +29,16 @@ class DetailFragment : Fragment() {
         val character = arguments?.getParcelable<CharactersResult>(CHARACTER)
         character?.let {
             Picasso.get().load(character.image).into(binding.ivDetailImage)
-            binding.tvDetailCharacterName.text = it.name
-            binding.tvDetailCharacterStatus.text = it.status
-            binding.tvDetailCharacterGender.text = it.gender
-            binding.tvDetailCharacterSpecie.text = it.species
+            binding.tvDetailCharacterName.text = "Nome: ${it.name}"
+            binding.tvDetailCharacterStatus.text = "Status: ${it.status}"
+            binding.tvDetailCharacterGender.text = "Gênero: ${it.gender}"
+            binding.tvDetailCharacterSpecie.text = "Espécie: ${it.species}"
 
             binding.ivIcon.setImageDrawable(
                 ContextCompat.getDrawable(binding.root.context,
                 if(it.isFavorite) R.drawable.ic_favorite
                 else R.drawable.ic_disfavor)
             )
-            (activity as HomeActivity).supportActionBar?.title = it.name
         }
     }
 
