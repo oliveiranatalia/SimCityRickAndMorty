@@ -2,6 +2,7 @@ package br.com.zup.simcityrickandmorty.ui.characterslist.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 import br.com.zup.simcityrickandmorty.databinding.CharacterItemBinding

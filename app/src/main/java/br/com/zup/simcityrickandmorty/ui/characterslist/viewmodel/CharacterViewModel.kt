@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 class CharacterViewModel(application: Application): AndroidViewModel(application) {
     private val useCase = CharacterUseCase(application)
     val listState = SingleLiveEvent<ViewState<List<CharactersResult>>>()
-    val favState = SingleLiveEvent<ViewState<CharactersResult>>()
     val loading = SingleLiveEvent<ViewState<Boolean>>()
 
     fun getCharacterList(){
@@ -30,18 +29,6 @@ class CharacterViewModel(application: Application): AndroidViewModel(application
                 listState.value = ViewState.Error(Throwable(ERROR))
             }finally {
                 loading.value = ViewState.Loading(false)
-            }
-        }
-    }
-    fun favoriteCharacter(charactersResult: CharactersResult){
-        viewModelScope.launch {
-            try{
-                val response = withContext(Dispatchers.IO){
-                    useCase.updateFavoritedList(charactersResult)
-                }
-                favState.value = response
-            }catch (e:Exception){
-                favState.value = ViewState.Error(Throwable(ERROR))
             }
         }
     }
