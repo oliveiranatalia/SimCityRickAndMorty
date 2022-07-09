@@ -9,8 +9,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitService {
     companion object {
-        const val BASE_URL = "https://api.themoviedb.org/3/"
-        const val API_KEY = "bde8033d3274c91b292a5293c6349052"
+        const val BASE_URL = "https://rickandmortyapi.com/api/"
 
         private val retrofit: Retrofit by lazy {
 

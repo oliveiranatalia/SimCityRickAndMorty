@@ -4,6 +4,6 @@ import br.com.zup.simcityrickandmorty.data.model.CharacterResponse
 import retrofit2.http.GET
 
 interface CharacterAPI {
-    @GET("/character")
+    @GET("character")
     suspend fun getCharactersList(): CharacterResponse
 }
