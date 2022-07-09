@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/size_16"
     android:layout_marginTop="@dimen/size_16"
@@ -15,8 +15,8 @@
         app:cardCornerRadius="@dimen/size_4" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivCharacterImage"
@@ -26,18 +26,18 @@
                 android:scaleType="fitXY"
                 app:shapeAppearanceOverlay="@style/RoundedSquare"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tvCharacterName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
                 android:id="@+id/tvCharacterName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/img_list_150"
+                android:layout_height="20dp"
                 android:text="@string/char_name"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_list_14"
+                android:maxHeight="@dimen/img_list_150"
                 android:layout_marginTop="@dimen/size_3"
                 android:layout_marginBottom="@dimen/size_4"
                 app:shapeAppearanceOverlay="@style/RoundedSquare"
