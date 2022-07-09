@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="br.com.zup.simcityrickandmorty.ui.characterslist.CharactersFragment"
+        android:name="br.com.zup.simcityrickandmorty.ui.characterslist.view.CharactersFragment"
         android:label="Rick and Morty"
         tools:layout="@layout/fragment_characters" >
         <action
@@ -20,8 +20,12 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="br.com.zup.simcityrickandmorty.ui.characterdetail.view.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        android:label="@string/char_name"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritedListFragment"
         android:name="br.com.zup.simcityrickandmorty.ui.favoritedlist.view.FavoritedListFragment"
