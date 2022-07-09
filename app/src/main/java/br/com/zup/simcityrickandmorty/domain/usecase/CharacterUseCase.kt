@@ -27,4 +27,21 @@ class CharacterUseCase(application: Application) {
             getLocalList()
         }
     }
+
+    suspend fun getFavoritedList():ViewState<List<CharactersResult>>{
+        return try{
+            val character = repository.getFavoritedList()
+            ViewState.Success(character)
+        }catch(e:Exception){
+            ViewState.Error(Exception(ERROR))
+        }
+    }
+    suspend fun updateFavoritedList(character:CharactersResult):ViewState<CharactersResult>{
+        return try{
+            repository.updateFavoritedList(character)
+            ViewState.Success(character)
+        }catch(e:Exception){
+            ViewState.Error(Exception(ERROR))
+        }
+    }
 }

@@ -11,4 +11,10 @@ class CharacterRepository(private val charDAO: CharactersDAO){
         return RetrofitService.apiService.getCharactersList()
     }
     suspend fun getLocalList():List<CharactersResult> = charDAO.getCharactersList()
+
+    suspend fun getFavoritedList():List<CharactersResult> = charDAO.getFavoritedCharacters()
+
+    suspend fun updateFavoritedList(character:CharactersResult){
+        charDAO.updateFavoritedList(character)
+    }
 }
