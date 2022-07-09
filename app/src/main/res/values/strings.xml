@@ -5,7 +5,7 @@
     <string name="fav_name">Favoritos</string>
     <string name="favorite">Personagem favoritado com sucesso!</string>
     <string name="disfavor">Personagem desfavoritado!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="loading">Carregando ...</string>
+    <string name="loading">Carregando …</string>
+    <string name="disfavor_error">Não foi possível desfavoritar o personagem. Tente novamente.</string>
+    <string name="favorite_error">Não foi possível favoritar o personagem. Tente novamente.</string>
 </resources>
