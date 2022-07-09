@@ -22,14 +22,16 @@ class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this)[DetailViewModel::class.java]
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailBinding.inflate(inflater,container,false)
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
-    private fun dataRecover(){
+
+    private fun dataRecover() {
         val character = arguments?.getParcelable<CharactersResult>(CHARACTER)
         character?.let {
             Picasso.get().load(character.image).into(binding.ivDetailImage)
@@ -39,6 +41,8 @@ class DetailFragment : Fragment() {
             binding.tvDetailCharacterSpecie.text = "Espécie: ${it.species}"
 
             (activity as HomeActivity).title.let { character.name }
+
+            binding.ivIcon.setOnClickListener { sendToFavoritedList(character) }
         }
     }
 
@@ -46,7 +50,8 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         dataRecover()
     }
-    private fun sendToFavoritedList(charactersResult: CharactersResult){
+
+    private fun sendToFavoritedList(charactersResult: CharactersResult) {
         viewModel.favoriteCharacter(charactersResult)
     }
 }
