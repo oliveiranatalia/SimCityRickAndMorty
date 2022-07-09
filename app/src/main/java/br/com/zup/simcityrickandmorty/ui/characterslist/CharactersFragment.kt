@@ -59,6 +59,7 @@ class CharactersFragment : Fragment() {
             when(it){
                 is ViewState.Loading -> {
                     binding.pbLoading.isVisible = it.loading == true
+                    binding.tvLoading.isVisible = it.loading == true
                 }
                 else -> {}
             }
