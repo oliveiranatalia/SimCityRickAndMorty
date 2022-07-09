@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 class CharacterViewModel(application: Application): AndroidViewModel(application) {
     private val useCase = CharacterUseCase(application)
     val listState = SingleLiveEvent<ViewState<List<CharactersResult>>>()
-    private val favState = SingleLiveEvent<ViewState<CharactersResult>>()
+    val favState = SingleLiveEvent<ViewState<CharactersResult>>()
     val loading = SingleLiveEvent<ViewState<Boolean>>()
 
     fun getCharacterList(){

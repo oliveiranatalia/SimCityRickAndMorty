@@ -62,6 +62,15 @@ class CharactersFragment : Fragment() {
                 else -> {}
             }
         }
+        viewModel.listState.observe(this.viewLifecycleOwner){
+            when(it){
+                is ViewState.Success ->{
+                    Toast.makeText(context,getString(R.string.favorite),Toast.LENGTH_LONG).show()}
+                is ViewState.Error -> {
+                    Toast.makeText(context, "${it.throwable.message}",Toast.LENGTH_LONG).show()}
+                else ->{}
+            }
+        }
     }
     private fun showRecycler(){
         binding.rvCharactersList.adapter = adapter
@@ -72,6 +81,6 @@ class CharactersFragment : Fragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_detailFragment,bundle)
     }
     private fun goToFavorited(char:CharactersResult){
-        TODO()
+        viewModel.favoriteCharacter(char)
     }
 }
