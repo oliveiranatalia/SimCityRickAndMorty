@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.zup.simcityrickandmorty.R
 import br.com.zup.simcityrickandmorty.const.CHARACTER
 import br.com.zup.simcityrickandmorty.const.ERROR
@@ -35,7 +40,9 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        showRecycler()
+        viewModel.getCharacterList()
+        observers()
 
     }
     private fun observers() {
@@ -50,13 +57,20 @@ class CharactersFragment : Fragment() {
         }
         viewModel.loading.observe(this.viewLifecycleOwner){
             when(it){
-                is ViewState.Loading -> { TODO()}
+                is ViewState.Loading -> {
+                    binding.pbLoading.isVisible = it.loading == true
+                }
                 else -> {}
             }
         }
     }
+    private fun showRecycler(){
+        binding.rvCharactersList.adapter = adapter
+        binding.rvCharactersList.layoutManager = GridLayoutManager(context,2)
+    }
     private fun goToDetail(char: CharactersResult){
         val bundle = bundleOf(CHARACTER to char)
+        NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_detailFragment,bundle)
     }
     private fun goToFavorited(char:CharactersResult){
         TODO()

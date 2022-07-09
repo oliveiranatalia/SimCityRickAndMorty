@@ -9,4 +9,5 @@
     <dimen name="img_detail_250">250dp</dimen>
     <dimen name="size_3">3dp</dimen>
     <dimen name="size_4">4dp</dimen>
+    <dimen name="bar_size">100dp</dimen>
 </resources>
