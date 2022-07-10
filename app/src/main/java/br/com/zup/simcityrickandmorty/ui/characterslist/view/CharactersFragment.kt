@@ -1,5 +1,7 @@
 package br.com.zup.simcityrickandmorty.ui.characterslist.view
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -81,7 +83,7 @@ class CharactersFragment : Fragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_detailFragment,bundle)
     }
     private fun goToFavorited(){
-        binding.ivFavoritedList.setOnClickListener{
+        binding.fabFavoritedList.setOnClickListener{
             NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_favoritedListFragment)
         }
     }
