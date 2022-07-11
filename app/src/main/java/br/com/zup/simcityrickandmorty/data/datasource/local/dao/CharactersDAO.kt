@@ -15,6 +15,6 @@ interface CharactersDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCharacters(characters: List<CharactersResult>)
 
-    @Query("SELECT * FROM characters ORDER BY created ASC")
+    @Query("SELECT * FROM characters ORDER BY type ASC")
     fun getCharactersList():List<CharactersResult>
 }
