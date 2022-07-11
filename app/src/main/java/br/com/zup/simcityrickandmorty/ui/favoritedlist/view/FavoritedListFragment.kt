@@ -49,7 +49,9 @@ class FavoritedListFragment : Fragment() {
         viewModel.favoritedList.observe(this.viewLifecycleOwner){
             when(it){
                 is ViewState.Success -> {
-                    adapter.updateList(it.data.toMutableList()) }
+                    adapter.updateList(it.data.toMutableList())
+                if(it.data.isEmpty()) {
+                    Toast.makeText(context,R.string.empty_fav_list,Toast.LENGTH_LONG).show()}}
                 is ViewState.Error -> {
                     Toast.makeText(context,"${it.throwable.message}",Toast.LENGTH_LONG).show()}
                 else -> {}

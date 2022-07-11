@@ -5,7 +5,7 @@
     <string name="fav_name">Favoritos</string>
     <string name="favorite">Personagem favoritado com sucesso!</string>
     <string name="disfavor">Personagem desfavoritado!</string>
-    <string name="loading">Carregando …</string>
     <string name="disfavor_error">Não foi possível desfavoritar o personagem. Tente novamente.</string>
     <string name="favorite_error">Não foi possível favoritar o personagem. Tente novamente.</string>
+    <string name="empty_fav_list">Não há personagens favoritados.</string>
 </resources>
