@@ -51,9 +51,9 @@ class FavoritedListFragment : Fragment() {
                 is ViewState.Success -> {
                     adapter.updateList(it.data.toMutableList())
                 if(it.data.isEmpty()) {
-                    Toast.makeText(context,R.string.empty_fav_list,Toast.LENGTH_LONG).show()}}
+                    Toast.makeText(context,R.string.empty_fav_list,Toast.LENGTH_SHORT).show()}}
                 is ViewState.Error -> {
-                    Toast.makeText(context,"${it.throwable.message}",Toast.LENGTH_LONG).show()}
+                    Toast.makeText(context,"${it.throwable.message}",Toast.LENGTH_SHORT).show()}
                 else -> {}
             }
         }

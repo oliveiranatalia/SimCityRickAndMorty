@@ -78,10 +78,10 @@ class DetailFragment : Fragment() {
             when(it){
                 is ViewState.Success -> {
                     if(it.data.isFavorite){
-                        Toast.makeText(context,R.string.favorite, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context,R.string.favorite, Toast.LENGTH_SHORT).show()
                     }}
                 is ViewState.Error -> {
-                    Toast.makeText(context,it.throwable.message, Toast.LENGTH_LONG).show()}
+                    Toast.makeText(context,it.throwable.message, Toast.LENGTH_SHORT).show()}
                 else -> {}
             }
         }
@@ -89,10 +89,10 @@ class DetailFragment : Fragment() {
             when(it){
                 is ViewState.Success -> {
                     if (!it.data.isFavorite) {
-                        Toast.makeText(context, R.string.disfavor, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, R.string.disfavor, Toast.LENGTH_SHORT).show()
                     }}
                 is ViewState.Error -> {
-                    Toast.makeText(context,it.throwable.message, Toast.LENGTH_LONG).show()}
+                    Toast.makeText(context,it.throwable.message, Toast.LENGTH_SHORT).show()}
                 else -> {}
             }
         }
