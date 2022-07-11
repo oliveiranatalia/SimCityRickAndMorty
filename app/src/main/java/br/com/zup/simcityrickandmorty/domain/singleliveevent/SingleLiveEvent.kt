@@ -1,4 +1,4 @@
-package br.com.zup.simcityrickandmorty.domain.model
+package br.com.zup.simcityrickandmorty.domain.singleliveevent
 
 import android.util.Log
 import androidx.annotation.MainThread
