@@ -16,6 +16,7 @@ import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 import br.com.zup.simcityrickandmorty.databinding.FragmentFavoritedListBinding
 import br.com.zup.simcityrickandmorty.ui.favoritedlist.view.adapter.FavoritedAdapter
 import br.com.zup.simcityrickandmorty.ui.favoritedlist.viewmodel.FavoritedViewModel
+import br.com.zup.simcityrickandmorty.ui.home.view.HomeActivity
 import br.com.zup.simcityrickandmorty.ui.viewstate.ViewState
 
 class FavoritedListFragment : Fragment() {
@@ -39,6 +40,7 @@ class FavoritedListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showRecycler()
         observers()
+        (activity as HomeActivity).supportActionBar?.hide()
         viewModel.getFavoritedList()
     }
     private fun showRecycler() {

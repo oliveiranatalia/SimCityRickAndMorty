@@ -17,6 +17,7 @@ import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 import br.com.zup.simcityrickandmorty.databinding.FragmentCharactersBinding
 import br.com.zup.simcityrickandmorty.ui.characterslist.view.adapter.CharactersAdapter
 import br.com.zup.simcityrickandmorty.ui.characterslist.viewmodel.CharacterViewModel
+import br.com.zup.simcityrickandmorty.ui.home.view.HomeActivity
 import br.com.zup.simcityrickandmorty.ui.viewstate.ViewState
 
 class CharactersFragment : Fragment() {
@@ -47,6 +48,7 @@ class CharactersFragment : Fragment() {
         showRecycler()
         observers()
         goToFavoritedList()
+        (activity as HomeActivity).supportActionBar?.hide()
     }
 
     private fun observers() {

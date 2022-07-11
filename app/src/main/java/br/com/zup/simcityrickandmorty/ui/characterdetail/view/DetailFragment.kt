@@ -46,6 +46,7 @@ class DetailFragment : Fragment() {
             binding.tvDetailCharacterGender.text = "Gênero: ${it.gender}"
             binding.tvDetailCharacterSpecie.text = "Espécie: ${it.species}"
 
+            (activity as HomeActivity).supportActionBar?.show()
             (activity as HomeActivity).supportActionBar?.title = it.name
 
             /** Para recuperar se o personagem está ou não favoritado **/
