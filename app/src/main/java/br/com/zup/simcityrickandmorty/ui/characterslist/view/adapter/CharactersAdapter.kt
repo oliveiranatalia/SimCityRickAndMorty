@@ -2,15 +2,14 @@ package br.com.zup.simcityrickandmorty.ui.characterslist.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 import br.com.zup.simcityrickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(
-    private var charList: MutableList<CharactersResult>,
-    private val clickDetail:(characterResult: CharactersResult) -> Unit
+    private var characterList: MutableList<CharactersResult>,
+    private val clickDetail:(characterResult: CharactersResult) -> Unit,
 ) :
     RecyclerView.Adapter<CharactersAdapter.ViewHolder>(){
 
@@ -27,17 +26,17 @@ class CharactersAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val char = charList[position]
-        holder.showInfo(char)
-        holder.binding.ivCharacterImage.setOnClickListener{
-            clickDetail(char)
+        val characters = characterList[position]
+        holder.showInfo(characters)
+        holder.binding.Item.setOnClickListener{
+            clickDetail(characters)
         }
     }
 
-    override fun getItemCount() = charList.size
+    override fun getItemCount() = characterList.size
 
     fun updateList(newList:MutableList<CharactersResult>){
-        charList = newList
+        characterList = newList
         notifyDataSetChanged()
     }
 }

@@ -5,16 +5,21 @@ import br.com.zup.simcityrickandmorty.data.datasource.remote.RetrofitService
 import br.com.zup.simcityrickandmorty.data.model.CharacterResponse
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 
-class CharacterRepository(private val charDAO: CharactersDAO){
+class CharacterRepository(private val characterDAO: CharactersDAO){
 
-    suspend fun getCharactersList():CharacterResponse{
-        return RetrofitService.apiService.getCharactersList()
+    suspend fun getCharactersListAPI():CharacterResponse{
+        return RetrofitService.apiService.getCharactersListAPI()
     }
-    suspend fun getLocalList():List<CharactersResult> = charDAO.getCharactersList()
 
-    suspend fun getFavoritedList():List<CharactersResult> = charDAO.getFavoritedCharacters()
+    fun getLocalList():List<CharactersResult> = characterDAO.getCharactersList()
+
+    suspend fun getFavoritedList():List<CharactersResult> = characterDAO.getFavoritedCharacters()
 
     suspend fun updateFavoritedList(character:CharactersResult){
-        charDAO.updateFavoritedList(character)
+        characterDAO.updateFavoritedList(character)
+    }
+
+    fun insertDatabaseList(characters: List<CharactersResult>){
+        characterDAO.insertCharacters(characters)
     }
 }

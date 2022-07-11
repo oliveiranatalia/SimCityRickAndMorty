@@ -8,8 +8,8 @@ import br.com.zup.simcityrickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
 
 class FavoritedAdapter (
-    private var charList: MutableList<CharactersResult>,
-    private val clickDetail:(characterResult: CharactersResult) -> Unit
+    private var charactersList: MutableList<CharactersResult>,
+    private val clickDetail:(character: CharactersResult) -> Unit
 ) : RecyclerView.Adapter<FavoritedAdapter.ViewHolder>(){
 
     class ViewHolder(val binding: CharacterItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,17 +25,18 @@ class FavoritedAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val char = charList[position]
-        holder.showInfo(char)
-        holder.binding.ivCharacterImage.setOnClickListener{
-            clickDetail(char)
+        val character = charactersList[position]
+        holder.showInfo(character)
+        holder.binding.Item.setOnClickListener{
+            clickDetail(character)
         }
+        holder.showInfo(character)
     }
 
-    override fun getItemCount() = charList.size
+    override fun getItemCount() = charactersList.size
 
     fun updateList(newList:MutableList<CharactersResult>){
-        charList = newList
+        charactersList = newList
         notifyDataSetChanged()
     }
 }

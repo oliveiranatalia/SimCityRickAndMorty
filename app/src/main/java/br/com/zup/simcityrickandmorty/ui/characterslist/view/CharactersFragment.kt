@@ -1,7 +1,5 @@
 package br.com.zup.simcityrickandmorty.ui.characterslist.view
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,10 +21,17 @@ import br.com.zup.simcityrickandmorty.ui.viewstate.ViewState
 
 class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersBinding
+
     private val viewModel: CharacterViewModel by lazy {
         ViewModelProvider(this)[CharacterViewModel::class.java]}
+
     private val adapter: CharactersAdapter by lazy {
         CharactersAdapter(arrayListOf(), ::goToDetail)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getCharacterList()
     }
 
     override fun onCreateView(
@@ -41,10 +45,10 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showRecycler()
-        viewModel.getCharacterList()
         observers()
-        goToFavorited()
+        goToFavoritedList()
     }
+
     private fun observers() {
         viewModel.listState.observe(this.viewLifecycleOwner) {
             when (it) {
@@ -55,34 +59,16 @@ class CharactersFragment : Fragment() {
                 else -> {}
             }
         }
-        viewModel.loading.observe(this.viewLifecycleOwner){
-            when(it){
-                is ViewState.Loading -> {
-                    binding.pbLoading.isVisible = it.loading == true
-                    binding.tvLoading.isVisible = it.loading == true
-                }
-                else -> {}
-            }
-        }
-        viewModel.listState.observe(this.viewLifecycleOwner){
-            when(it){
-                is ViewState.Success ->{
-                    Toast.makeText(context,getString(R.string.favorite),Toast.LENGTH_LONG).show()}
-                is ViewState.Error -> {
-                    Toast.makeText(context, "${it.throwable.message}",Toast.LENGTH_LONG).show()}
-                else ->{}
-            }
-        }
     }
     private fun showRecycler(){
         binding.rvCharactersList.adapter = adapter
         binding.rvCharactersList.layoutManager = GridLayoutManager(context,2)
     }
-    private fun goToDetail(char: CharactersResult){
-        val bundle = bundleOf(CHARACTER to char)
+    private fun goToDetail(character: CharactersResult){
+        val bundle = bundleOf(CHARACTER to character)
         NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_detailFragment,bundle)
     }
-    private fun goToFavorited(){
+    private fun goToFavoritedList(){
         binding.fabFavoritedList.setOnClickListener{
             NavHostFragment.findNavController(this).navigate(R.id.action_charactersFragment_to_favoritedListFragment)
         }

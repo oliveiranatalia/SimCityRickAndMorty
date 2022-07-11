@@ -5,10 +5,9 @@ import androidx.room.*
 import br.com.zup.simcityrickandmorty.data.datasource.local.dao.CharactersDAO
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
 
-@Database(entities = [CharactersResult::class], version = 3)
-@TypeConverters(Converters::class)
+@Database(entities = [CharactersResult::class], version = 2)
 abstract class CharactersDatabase:RoomDatabase() {
-    abstract fun charDao(): CharactersDAO
+    abstract fun characterAO(): CharactersDAO
 
     companion object {
         @Volatile

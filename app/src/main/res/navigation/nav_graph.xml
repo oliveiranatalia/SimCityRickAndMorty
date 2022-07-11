@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="br.com.zup.simcityrickandmorty.ui.characterdetail.view.DetailFragment"
-        android:label="@string/char_name"
+        android:label=""
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_detailFragment_to_charactersFragment"
@@ -34,8 +34,5 @@
         <action
             android:id="@+id/action_favoritedListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_favoritedListFragment_to_charactersFragment"
-            app:destination="@id/charactersFragment" />
     </fragment>
 </navigation>

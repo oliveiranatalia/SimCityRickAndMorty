@@ -2,11 +2,10 @@ package br.com.zup.simcityrickandmorty.ui.characterdetail.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import br.com.zup.simcityrickandmorty.const.ERROR
+import br.com.zup.simcityrickandmorty.R
 import br.com.zup.simcityrickandmorty.data.model.CharactersResult
-import br.com.zup.simcityrickandmorty.domain.model.SingleLiveEvent
+import br.com.zup.simcityrickandmorty.domain.singleliveevent.SingleLiveEvent
 import br.com.zup.simcityrickandmorty.domain.usecase.CharacterUseCase
 import br.com.zup.simcityrickandmorty.ui.viewstate.ViewState
 import kotlinx.coroutines.Dispatchers
@@ -15,28 +14,31 @@ import kotlinx.coroutines.withContext
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
     private val useCase = CharacterUseCase(application)
-    val characterState = MutableLiveData<ViewState<List<CharactersResult>>>()
-    val favState = SingleLiveEvent<ViewState<CharactersResult>>()
+    val favoritedList = SingleLiveEvent<ViewState<List<CharactersResult>>>()
+    val favorite = SingleLiveEvent<ViewState<CharactersResult>>()
+    val disfavor = SingleLiveEvent<ViewState<CharactersResult>>()
 
-   suspend fun characterDetail(){
-       try{
-           val response = withContext(Dispatchers.IO){
-               useCase.getCharactersAPI()
-           }
-           characterState.value = response
-       }catch(e:Exception){
-           characterState.value = ViewState.Error(Throwable(ERROR))
-       }
-   }
-    fun favoriteCharacter(charactersResult: CharactersResult){
+    fun updateFavoritedList(character: CharactersResult){
         viewModelScope.launch {
             try{
                 val response = withContext(Dispatchers.IO){
-                    useCase.updateFavoritedList(charactersResult)
+                    useCase.updateFavoritedList(character)
                 }
-                favState.value = response
-            }catch (e:Exception){
-                favState.value = ViewState.Error(Throwable(ERROR))
+                favorite.value = response
+            }catch(e:Exception){
+                favoritedList.value = ViewState.Error(Throwable(R.string.favorite_error.toString()))
+            }
+        }
+    }
+    fun disfavor(character: CharactersResult){
+        viewModelScope.launch {
+            try{
+                val response = withContext(Dispatchers.IO){
+                    useCase.updateFavoritedList(character)
+                }
+                disfavor.value = response
+            }catch(e:Exception){
+                disfavor.value = ViewState.Error(Throwable(R.string.disfavor_error.toString()))
             }
         }
     }
